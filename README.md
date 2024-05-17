@@ -27,4 +27,4 @@ The application was containerized using Docker, facilitating easy deployment and
 - Version Control: Utilized feature branches on GitHub, merging into a single version on a weekly basis to integrate new features and updates.
   
 ## Screenshots:
-![](django_root/images/application/mainview.jpg)
+![](django_root/images/application_mainview.jpg)
