@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <body>
+        <script>
+        document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.nav-tabs a');
+  for (let i = 0; i < tabs.length; i++) {
+    tabs[i].addEventListener('click', (event) => {
+      event.preventDefault();
+      showTab(event.target);
+    });
+  }
+});
+
+function showTab(tab) {
+  const target = tab.getAttribute('href');
+  const tabContent = document.querySelector(target);
+  if (tabContent) {
+    const allTabs = document.querySelectorAll('.nav-tabs a');
+    for (let i = 0; i < allTabs.length; i++) {
+      allTabs[i].classList.remove('active');
+    }
+    tab.classList.add('active');
+
+    const allTabContents = document.querySelectorAll('.tab-content .tab-pane');
+    for (let j = 0; j < allTabContents.length; j++) {
+      allTabContents[j].classList.remove('active');
+    }
+    tabContent.classList.add('active');
+  }
+}
+        </script>
+        <div class="textfield">
+            <div class="title">
+                <div class="name">Ecosystem benefits of High Andean Wetlands</div>
+            </div>
+        </div>
+
+        <form method="GET">
+            <div class="searching">
+                <select name="attribute" class="form-control select-with">
+                    <option value="" disabled selected hidden>Search with...</option>
+                    <option value="ISBN">ISBN</option>
+                    <option value="DOI">DOI</option>
+                    <option value="Title">Title</option>
+                    <option value="Language">Language</option>
+                </select>
+                <input type="search" name="q" placeholder="Search" class="form-control">
+            </div>
+        </form>
+
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#map"><i class="fa fa-map-marker"></i>Map view</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#list"><i class="fa fa-bars"></i>List view</a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="map">
+                <div id="map"></div>
+            </div>
+            <div class="tab-pane fade" id="list">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>AUTHOR</th>
+                            <th>DOI</th>
+                            <th>ABSTRACT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Author 1</td>
+                            <td>DOI 1</td>
+                            <td>Abstract 1</td>
+                        </tr>
+                        <tr>
+                            <td>Author 2</td>
+                            <td>DOI 2</td>
+                            <td>Abstract 2</td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script>
+            // Initialize the map
+            var map = L.map('map').setView([-15, -60], 3);
+
+            // Add a tile layer
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(map);
+        </script>
+    </body>
+{% endblock %}

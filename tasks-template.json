@@ -1,0 +1,29 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start Postgres",
+      "command": "docker compose up postgres",
+      "type": "shell",
+      "problemMatcher": []
+    },
+    {
+      "label": "Run Django Server",
+      "command": "python django_root/manage.py runserver",
+      "type": "shell",
+      "problemMatcher": []
+    },
+    {
+      "label": "Create Django Migrations",
+      "command": "python django_root/manage.py makemigrations",
+      "type": "shell",
+      "problemMatcher": []
+    },
+    {
+      "label": "Run Django Migrations",
+      "command": "python django_root/manage.py migrate",
+      "type": "shell",
+      "problemMatcher": []
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <body>
+
+        <div class="textfield">
+            <div class="title">
+                <div class="name">Ecosystem benefits of High Andean Wetlands</div>
+            </div>
+        </div>
+
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#map"><i class="fa fa-map-marker"></i>Map view</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#list"><i class="fa fa-bars"></i>List view</a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="map">
+                <div id="map"></div>
+            </div>
+            <div class="tab-pane fade" id="list">
+                <p>List tab content</p>
+            </div>
+        </div>
+
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script>
+            // Initialize the map
+            var map = L.map('map').setView([-15, -60], 3);
+
+            // Add a tile layer
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(map);
+        </script>
+    </body>
+{% endblock %}
